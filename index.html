@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon.svg"
+    />
+    <script type="module" src="./script.js"></script>
+    <title>Kanban Task Management</title>
+  </head>
+  <body>
+    <!-- Navigation Sidebar -->
+    <nav class="side-bar" id="side-bar-div">
+      <div id="side-logo-div">
+        <img id="logo" src="./assets/logo-light.svg" alt="logo-light" />
+      </div>
+      <div class="boards-nav-links-div" id="boards-nav-links-div">
+        <h4 id="headline-sidepanel">ALL BOARDS (1)</h4>
+        <button class="board-btn">Launch Career</button>
+      </div>
+      <div class="sidebar-bottom">
+        <button class="theme-switch">
+          <span class="icon">🌑</span> <!-- Moon icon for dark mode -->
+          <span class="icon">☀️</span> <!-- Sun icon for light mode -->
+        </button>
+        <button class="hide-sidebar">
+          <span class="icon">🚫</span> Hide Sidebar
+        </button>
+      </div>
+    </nav>
+    <!-- Main Layout -->
+    <div id="layout">
+      <header id="header" class="sticky-header">
+        <div class="header-name-div">
+          <img
+            src="./assets/favicon.svg"
+            alt="logo-mobile"
+            class="logo-mobile"
+          />
+          <h2 class="header-board-name" id="header-board-name">
+            Launch Career
+          </h2>
+        </div>
+        <button id="new-task-btn" class="new-task-btn"><span>+ Add New Task</span></button>
+      </header>
+      <div class="container">
+        <main class="card-column-main">
+          <!-- TODO Column -->
+          <div class="column-div" data-status="todo">
+            <div id="todo-head-div" class="column-head-div">
+              <span class="dot" id="todo-dot"></span>
+              <h4 id="toDoText" class="columnHeader">TODO (0)</h4>
+            </div>
+            <div class="tasks-container"></div>
+          </div>
+          <!-- DOING Column -->
+          <div class="column-div" data-status="doing">
+            <div id="doing-head-div" class="column-head-div">
+              <span class="dot" id="doing-dot"></span>
+              <h4 id="doingText" class="columnHeader">DOING (0)</h4>
+            </div>
+            <div class="tasks-container"></div>
+          </div>
+          <!-- DONE Column -->
+          <div class="column-div" data-status="done">
+            <div id="done-head-div" class="column-head-div">
+              <span class="dot" id="done-dot"></span>
+              <h4 id="doneText" class="columnHeader">DONE (0)</h4>
+            </div>
+            <div class="tasks-container"></div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <!-- Modal for Task Details -->
+    <div id="task-modal" class="modal">
+      <div class="modal-content">
+        <span id="close-modal" class="close">×</span>
+        <h2>Task</h2>
+        <label for="task-title">Title</label>
+        <input type="text" id="task-title" placeholder="e.g. Launch Epic Career">
+        <label for="task-description">Description</label>
+        <div id="description-alert" class="alert-bar" style="display: none;">❗Please Fill Out This Field.</div>
+        <textarea id="task-description" placeholder="e.g. Create a killer Resume"></textarea>
+        <label for="task-status">Status</label>
+        <select id="task-status">
+          <option value="todo">To Do</option>
+          <option value="doing">Doing</option>
+          <option value="done">Done</option>
+        </select>
+        <div class="modal-buttons">
+          <button id="save-changes">Create Task</button>
+          <button id="delete-task">Delete Task</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
