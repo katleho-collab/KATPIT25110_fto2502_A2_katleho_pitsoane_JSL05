@@ -105,6 +105,14 @@ h4 {
     width: 100%;
 }
 
+.theme-switch {
+    justify-content: center;
+}
+
+.hide-sidebar {
+    justify-content: center;
+}
+
 .theme-switch .icon, .hide-sidebar .icon {
     font-size: 1.2rem;
 }
