@@ -9,6 +9,9 @@
     --secondary-font-color: #828fa3;
     --primary-box-shadow: 0px 4px 6px rgba(54, 78, 126, 0.1015);
     --sidebar-width: 300px;
+    --dark-primary-color: #2b2c37;
+    --dark-secondary-color: #20212c;
+    --dark-font-color: #ffffff;
 }
 
 body {
@@ -19,7 +22,8 @@ body {
     min-height: 100vh;
     margin: 0;
     background-color: var(--secondary-color);
-    font-size: 1rem;
+    color: var(--primary-font-color);
+    transition: all 0.3s ease;
 }
 
 /* Sidebar */
@@ -111,6 +115,52 @@ h4 {
 
 .hide-sidebar {
     justify-content: center;
+}
+
+/* Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #635fc7;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #635fc7;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
 }
 
 .theme-switch .icon, .hide-sidebar .icon {
@@ -469,4 +519,12 @@ h2 {
         flex-direction: column;
         gap: 10px;
     }
+}
+
+body.dark-mode {
+    --primary-color: var(--dark-primary-color);
+    --secondary-color: var(--dark-secondary-color);
+    --primary-font-color: var(--dark-font-color);
+    --secondary-font-color: #a8a8a8;
+    --primary-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }

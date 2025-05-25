@@ -12,6 +12,7 @@ const closeModalBtn = document.getElementById('close-modal');
 const saveChangesBtn = document.getElementById('save-changes');
 const deleteTaskBtn = document.getElementById('delete-task');
 const newTaskBtn = document.getElementById('new-task-btn');
+const themeToggle = document.getElementById('theme-toggle');
 
 /**
  * Saves the tasks array to localStorage.
@@ -135,11 +136,35 @@ function deleteTask() {
   closeModal();
 }
 
+/**
+ * Toggles between light and dark mode.
+ */
+function toggleTheme(e) {
+  if (e.target.checked) {
+    document.body.classList.add('dark-mode');
+    localStorage.setItem('theme', 'dark');
+  } else {
+    document.body.classList.remove('dark-mode');
+    localStorage.setItem('theme', 'light');
+  }
+}
+
 // Event listeners for buttons
 closeModalBtn.addEventListener('click', closeModal);
 saveChangesBtn.addEventListener('click', saveChanges);
 deleteTaskBtn.addEventListener('click', deleteTask);
 newTaskBtn.addEventListener('click', () => openModal(null, false));
+themeToggle.addEventListener('change', toggleTheme);
 
-// Render tasks when the page loads
-renderTasks();
+// Load theme from localStorage on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    themeToggle.checked = true;
+  } else {
+    document.body.classList.remove('dark-mode');
+    themeToggle.checked = false;
+  }
+  renderTasks();
+});
